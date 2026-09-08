@@ -1,0 +1,10 @@
+dependencies:
+  # 1.0.1 (the version Waveshare's own demo manifest pins) fails to build
+  # against recent IDF -- esp_lcd_panel_dev_config_t's color_space field
+  # was renamed to rgb_ele_order upstream; 2.x already tracks that.
+  espressif/esp_lcd_axs15231b: "^2.0.0"
+  espressif/esp_lvgl_port: "^2.9.0"
+  lvgl/lvgl: "^8.3.11"
+  # This board is the V2 hardware revision -- LCD reset and backlight
+  # enable are both behind this I2C GPIO expander, not direct GPIOs.
+  espressif/esp_io_expander_tca9554: "^2.0.1"

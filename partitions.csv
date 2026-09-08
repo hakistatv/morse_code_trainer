@@ -1,0 +1,7 @@
+# Name,   Type, SubType, Offset,  Size, Flags
+# Custom table -- the default single-app table's 1MB factory partition is
+# tight once LVGL + the AXS15231B/touch drivers are linked in. This board
+# has 16MB of flash (W25Q128JVSI), so grow the app rather than trim it.
+nvs,      data, nvs,     0x9000,  0x6000,
+phy_init, data, phy,     0xf000,  0x1000,
+factory,  app,  factory, 0x10000, 4M,

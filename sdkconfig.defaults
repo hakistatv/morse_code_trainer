@@ -1,0 +1,27 @@
+CONFIG_IDF_TARGET="esp32s3"
+CONFIG_ESPTOOLPY_NO_STUB=y
+
+# This board's chip is an ESP32-S3R8 (octal PSRAM) with a W25Q128JVSI
+# (16MB) flash chip -- confirmed against Waveshare's own sdkconfig.defaults
+# for this exact board (waveshareteam/ESP32-S3-Touch-LCD-3.49). The large
+# PSRAM is where LVGL's full-canvas render buffer lives (see lcd_ui.c).
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE="16MB"
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y
+CONFIG_SPIRAM_SPEED_80M=y
+
+# LVGL fonts: a big glyph for the decoded letter in the middle of the
+# panel, and a slightly-larger-than-default 20px face for the autocomplete
+# list. The running output line stays at the 14px default.
+CONFIG_LV_FONT_MONTSERRAT_20=y
+CONFIG_LV_FONT_MONTSERRAT_48=y
+
+# The AXS15231B panel reads each RGB565 pixel word big-endian over the
+# wire; the ESP32-S3 is little-endian. Confirmed on real hardware in the
+# sibling morse_code_listener project (an unswapped cyan fill rendered as
+# yellow -- exactly the byte-swapped value). LVGL needs the same swap
+# applied to everything it renders.
+CONFIG_LV_COLOR_16_SWAP=y
