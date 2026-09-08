@@ -266,8 +266,8 @@ shows up after pulling changes.
   plain text, not a drawn tree.
 - **Practice doesn't replay the word as audio** -- you key from the
   letters on screen, not by ear.
-- Not yet flashed to real V2 hardware, and not published as a repo (no
-  browser flasher / prebuilt firmware).
+- Not yet flashed to real V2 hardware. No browser flasher / prebuilt
+  firmware yet (the sibling projects publish one via GitHub Actions).
 
 ## Attribution
 
